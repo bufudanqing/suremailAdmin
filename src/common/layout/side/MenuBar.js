@@ -1,34 +1,37 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+import React from 'react';
+// import ReactDOM from 'react-dom'
+
 import './MenuBar.less'
-import { Menu, Icon, Button, Switch } from 'antd';
+import { Menu, Icon, Switch } from 'antd';
 const SubMenu = Menu.SubMenu;
 
-export default class App extends React.Component {
-  rootSubmenuKeys = ['sub1', 'sub2', 'sub3'];  
-  state = {
-    collapsed: false,
-    theme: 'dark',
-    current: '1',
-    openKeys: ['1'],
+export default class MenuBar extends React.Component {
+  constructor (props) {
+    super(props);
+    
+    this.state = {
+      collapsed: false,
+      theme: 'dark',
+      current: '1',
+      openKeys: ['1'],
+      rootSubmenuKeys : ['sub1', 'sub2', 'sub3'],
+      
+    };
+    // this.handleChange = this.handleChange.bind(this);
   }
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
-  changeTheme = (value) => {
+
+  changeTheme (value) {
     this.setState({
       theme: value ? 'dark' : 'light',
     });
   }
-  handleClick = (e) => {
+  handleClick (e) {
     console.log('click', e);
     this.setState({
       current: e.key,
     });
   }
-  onOpenChange = (openKeys) => {
+  onOpenChange (openKeys) {
     const lastestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
     if (this.rootSubmenuKeys.indexOf(lastestOpenKey) === -1) {
       this.setState({ openKeys });
@@ -40,14 +43,12 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div className="menuwrapper" style={{ width: 240 }}>
+      <div className="menuwrapper" >
         <div className="author">
           <a><Icon type="github" style={{ fontSize: 32 }} /></a>
           <span> LB </span>
         </div>
-        {/* <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-          <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-        </Button> */}
+        
         <Menu
           defaultSelectedKeys={['1']}
           selectedKeys = {[this.state.current]}
@@ -80,21 +81,21 @@ export default class App extends React.Component {
           <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>公司动态</span></span>}>
             <Menu.Item key="10">成功案例</Menu.Item>
             <Menu.Item key="11">招聘信息</Menu.Item>
+            <Menu.Item key="12">奖杯表扬</Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" title={<span><Icon type="solution" /><span>网站管理</span></span>}>
-            <Menu.Item key="12">后台用户</Menu.Item>
-            <Menu.Item key="13">管理日志</Menu.Item>
+            <Menu.Item key="13">后台用户</Menu.Item>
+            <Menu.Item key="14">管理日志</Menu.Item>
           </SubMenu>
         </Menu>
         <Switch
           checked= {this.state.theme === 'dark'}
-          onChange = {this.changeTheme}
+          onChange = {() => this.changeTheme()}
           checkedChildren = 'Dark'
           unCheckedChildren = 'Light'
         />
+
       </div>
     );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('root'));

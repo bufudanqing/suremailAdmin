@@ -4,8 +4,7 @@ import './App.css';
 // import AppBar from 'material-ui/AppBar';
 // import SideMenu from './common/layout/SideMenu';
 import 'antd/dist/antd.css';
-import MenuBar from './common/layout/side/MenuBar';
-
+import MainContainer from './common/layout/main/MainContainer';
 
 class App extends Component {
   render() {
@@ -15,7 +14,7 @@ class App extends Component {
         <SideMenu />
         <AppBar title="Title" />
         </MuiThemeProvider> */}
-        <MenuBar />
+        <MainContainer />
       </div>
     );
   }

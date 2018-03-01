@@ -1,0 +1,14 @@
+.menuwrapper {
+  height: 100%;
+  background: #001529;
+}
+.author {
+  width: 100%;
+  padding-top: 10px;
+  height: 80px;
+}
+.author > span {
+  font-size: 36px;
+  color: #fff;
+  font-weight: normal;
+}
