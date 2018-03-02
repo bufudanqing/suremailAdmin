@@ -4,6 +4,9 @@ import Weather from '../../components/weather/Weather'
 import VisitCounts from '../../components/visitcounts/VisitCounts'
 import VisitCharts from '../../components/visitcharts/VisitCharts'
 import ToDo from '../../components/todo/ToDo'
+import FeedBack from '../../components/feedback/FeedBack'
+import NewsList from '../../components/newslist/NewsList'
+
 import './IndexContent.less';
 import 'antd/dist/antd.css';
 
@@ -34,10 +37,14 @@ export default class IndexContent extends React.Component {
                   </div>
                 </Col>
                 <Col className="gutter-row" span={8}>
-                  <div className="gutter-box">网站反馈</div>
+                  <div className="gutter-box">
+                     <FeedBack/>
+                  </div>
                 </Col>
                 <Col className="gutter-row" span={8}>
-                  <div className="gutter-box">新闻阅读排行</div>
+                  <div className="gutter-box">
+                    <NewsList/>
+                  </div>
                 </Col>
               </Row>
 
