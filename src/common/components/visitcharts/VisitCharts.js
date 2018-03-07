@@ -4,16 +4,18 @@ import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
+import './VisitCharts.less'
 
 
 class VisitCharts extends React.Component {
     componentDidMount() {
         var xAxisData = [];
-        var data = [];
-        for (var i = 0; i < 50; i++) {
-            xAxisData.push(i);
-            data.push((Math.sin(i / 5) * (i / 5 -10) + i / 6) * 5)
-        }
+        var data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220,220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
+        // var data = [];
+        // for (var i = 0; i < 50; i++) {
+        //     xAxisData.push(i);
+        //     data.push((Math.sin(i / 5) * (i / 15 -10) + i / 6) * 5)
+        // }
 
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
@@ -22,16 +24,16 @@ class VisitCharts extends React.Component {
             backgroundColor: '#08263a',
             tooltip: {},
             xAxis: {
-                show: false,
+                // show: false,
                 data: xAxisData
             },
             yAxis: {
                 axisLine: {
-                    show: false
+                    show: true
                 },
                 axisLabel: {
                     textStyle: {
-                        color: '#4a657a'
+                        color: '#fff'
                     }  
                 },
                 splitLine: {
@@ -76,7 +78,7 @@ class VisitCharts extends React.Component {
     }
     render() {
         return (
-            <div id="main" style={{ width: 500 , height: 155 }}></div>
+            <div id="main" ></div>
         );
     }
 }

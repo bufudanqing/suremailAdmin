@@ -1,6 +1,7 @@
 import React from 'react'
 // import { Card, Divider } from 'antd'
 import MobileTearSheet from '../../../MobileTearSheet';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
@@ -23,6 +24,7 @@ import './ToDo.less'
 //     }
 // }
 const ToDo = () => (
+  <MuiThemeProvider>
     <MobileTearSheet>
       <List>
         <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
@@ -39,6 +41,7 @@ const ToDo = () => (
         <ListItem primaryText="Follow up" rightIcon={<ActionInfo />} />
       </List>
     </MobileTearSheet>
+    </MuiThemeProvider>
   );
   
   export default ToDo;
