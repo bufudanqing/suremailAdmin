@@ -6,11 +6,11 @@ export default class VisitCounts extends React.Component {
     render () {
         return (
             <Card>
-                <span>今日访问量</span><span className="num">666</span>
+                <span className='count'>今日访问量</span><span className="num">666</span>
                 <Divider/>
-                <span>昨日访问量</span><span className="num">888</span>
+                <span className='count'>昨日访问量</span><span className="num">888</span>
                 <Divider/>
-                <span>新闻总数</span><span className="num">999</span>            
+                <span className='count'>新闻总数</span><span className="num">999</span>            
            </Card>
         )
     }

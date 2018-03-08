@@ -9,12 +9,14 @@ export default class FeedBack extends React.Component {
             'Australian walks 100km after outback crash.',
             'Man charged over missing wedding girl.',
             'Los Angeles battles huge wildfires.',
+            'Australian walks 100km after outback crash.',
+            'Man charged over missing wedding girl.',
+            'Los Angeles battles huge wildfires.',
           ];
         return (
                <Card>
                     <h3 style={{ marginBottom: 16 }}>反馈信息</h3>
                     <List
-                        bordered
                         dataSource={data}
                         renderItem={item => (<List.Item>{item}</List.Item>)}
                     />
