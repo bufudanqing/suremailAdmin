@@ -1,9 +1,10 @@
 import React from 'react'
 import { Card } from 'antd'
-import echarts from 'echarts/lib/echarts';
+import echarts from 'echarts';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
+import 'echarts/lib/component/visualMap';
 import './VisitCharts.less'
 
 
@@ -52,20 +53,37 @@ class VisitCharts extends React.Component {
         var myChart = echarts.init(document.getElementById('main'));
         // 绘制图表
         myChart.setOption({
-            backgroundColor: '#08263a',
-            tooltip: {},
-            xAxis: {
-                // show: false,
-                data: xAxisData
+            title: {
+                text: '最近50天每天网站访问量',
+                left: 'center',
+                textStyle: {
+                    color: '#ccc',
+                    fontSize: 12,
+                },
+                padding: 10,
             },
+            backgroundColor: '#404040',
+            tooltip: {},
+            xAxis: [{
+                show: true,
+                data: xAxisData,
+                axisLabel: {
+                    textStyle: {
+                        color: '#ccc'
+                    }
+                }
+            }, {
+                show: false,
+                data: xAxisData
+            }],
             yAxis: {
                 axisLine: {
-                    show: true
+                    show: false
                 },
                 axisLabel: {
                     textStyle: {
-                        color: '#fff'
-                    }  
+                        color: '#ccc'
+                    }
                 },
                 splitLine: {
                     show: true,
@@ -86,30 +104,45 @@ class VisitCharts extends React.Component {
                     color: ['#4a657a', '#308e92', '#b1cfa5', '#f5d69f', '#f5898b', '#ef5055']
                 }
             },
-            series: [{
-                type: 'bar',
+            series: [
+                {
+                name: 'Simulate Shadow',
+                type: 'line',
                 data: data,
-                itemStyle: {
+                z: 2,
+                showSymbol: false,
+                animationDelay: 0,
+                animationEasing: 'linear',
+                animationDuration: 1200,
+                lineStyle: {
                     normal: {
-                        barBorderRadius: 5,
-                        shadowBlur: 10,
-                        shadowColor: '#111'
+                        color: 'transparent'
                     }
                 },
-                animationEasing: 'elasticOut',
-                animationEasingUpdate: 'elasticOut',
-                animationDelay: function (idx) {
-                    return idx * 20;
-                },
-                animationDelayUpdate: function (idx) {
-                    return idx * 20;
+                areaStyle: {
+                    normal: {
+                        color: '#08263a',
+                        shadowBlur:30,
+                        shadowColor: '#000'
+                    }
                 }
-            }]
+            }, {
+                name: '访问量',
+                type: 'bar',
+                data: data,
+                xAxisIndex: 1,
+                z: 3,
+                itemStyle: {
+                    normal: {
+                        barBorderRadius: 5
+                    }
+                }
+            }],
         });
     }
     render() {
         return (
-            <div id="main" ></div>
+            <div id="main" style={{height: '228px', width: '100%'}}></div>
         );
     }
 }

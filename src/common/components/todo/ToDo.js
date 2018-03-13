@@ -12,6 +12,7 @@ import { Card, Divider, Tabs, Icon } from 'antd'
 import './ToDo.less'
 import TodoItmes from './ToDoItems'
 import AllItems from './AllItems'
+import HopeTo from './HopeTo'
 const TabPane = Tabs.TabPane;
 
 export default class ToDo extends React.Component{
@@ -24,7 +25,7 @@ export default class ToDo extends React.Component{
                       <AllItems/>
                     </TabPane>
                     <TabPane tab={<span>待办</span>} key="2">
-                      Tab 2
+                      <HopeTo />
                     </TabPane>
                     <TabPane tab={<span>已完成</span>} key="3">
                       Tab 3

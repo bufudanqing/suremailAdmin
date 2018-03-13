@@ -18,6 +18,7 @@ export default class MenuBar extends React.Component {
       
     };
     // this.handleChange = this.handleChange.bind(this);
+    this.onOpenChange = this.onOpenChange.bind(this);
   }
 
   changeTheme (value) {
@@ -33,7 +34,9 @@ export default class MenuBar extends React.Component {
   }
   onOpenChange (openKeys) {
     const lastestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
-    if (this.rootSubmenuKeys.indexOf(lastestOpenKey) === -1) {
+    console.info(lastestOpenKey);
+    console.info(this.state.rootSubmenuKeys);
+    if (this.state.rootSubmenuKeys.indexOf(lastestOpenKey) === -1) {
       this.setState({ openKeys });
     } else {
       this.setState({
@@ -54,7 +57,7 @@ export default class MenuBar extends React.Component {
           selectedKeys = {[this.state.current]}
           // defaultOpenKeys={['sub1']}
           openKeys = {this.state.openKeys}
-          onOpenChange = {this.onOpenChange}
+          onOpenChange = {this.onOpenChange.bind(this)}
           mode="inline"
           theme={this.state.theme}
           inlineCollapsed={this.state.collapsed}

@@ -1,3 +1,15 @@
 .todowrapper {
   width: 100%;
 }
+.list-group-item > .ant-row {
+  position: relative;
+  bottom: 25px;
+  text-align: left;
+}
+.ant-row .ant-col-12:nth-child(2) {
+  width: 75%;
+}
+.ant-row .ant-col-12:nth-child(2) {
+  float: right;
+  width: 65px;
+}
