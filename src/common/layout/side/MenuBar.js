@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 // import ReactDOM from 'react-dom'
 import { allMenu } from '../../utils/menu'
 import './MenuBar.less'
@@ -50,7 +51,7 @@ export default class MenuBar extends React.Component {
       <div className="menuwrapper" >
         <div className="author">
           <a><Icon type="github" style={{ fontSize: 32 }} /></a>
-          <span> LB </span>
+          <span> HH </span>
         </div>
         
         <Menu
@@ -63,7 +64,27 @@ export default class MenuBar extends React.Component {
           theme={this.state.theme}
           inlineCollapsed={this.state.collapsed}
         >
-          <Menu.Item key="1">
+        {
+          allMenu.map((subMenu) => {
+            if(subMenu.children && subMenu.children.length) {
+              return (
+                <SubMenu key={subMenu.url} title={<span><Icon type={subMenu.icon}/><span>{subMenu.name}</span></span>}>
+                  {subMenu.children.map(menu => (
+                    <Menu.Item key={menu.url}><Link>{menu.name}</Link></Menu.Item>
+                  ))}
+                </SubMenu>
+              )
+            }
+            return (
+              <Menu.Item key={subMenu.url}>
+                <Link >
+                  <Icon type="subMenu.icon" /><span className="nav-text">{subMenu.name}</span>
+                </Link>
+              </Menu.Item>
+            )
+          })
+        }
+          {/* <Menu.Item key="1">
             <Icon type="home" />
             <span>首页</span>
           </Menu.Item>
@@ -90,7 +111,7 @@ export default class MenuBar extends React.Component {
           <SubMenu key="sub3" title={<span><Icon type="solution" /><span>网站管理</span></span>}>
             <Menu.Item key="13">后台用户</Menu.Item>
             <Menu.Item key="14">管理日志</Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
         </Menu>
         <Switch
           checked= {this.state.theme === 'dark'}
