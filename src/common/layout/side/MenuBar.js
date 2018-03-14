@@ -1,9 +1,11 @@
 import React from 'react';
 // import ReactDOM from 'react-dom'
-
+import { allMenu } from '../../utils/menu'
 import './MenuBar.less'
-import { Menu, Icon, Switch } from 'antd';
+import { Menu, Icon, Switch, Layout } from 'antd';
+
 const SubMenu = Menu.SubMenu;
+const { sider } = Layout
 
 export default class MenuBar extends React.Component {
   constructor (props) {
@@ -14,8 +16,7 @@ export default class MenuBar extends React.Component {
       theme: 'dark',
       current: '1',
       openKeys: ['1'],
-      rootSubmenuKeys : ['sub1', 'sub2', 'sub3'],
-      
+      rootSubmenuKeys : ['sub1', 'sub2', 'sub3'],      
     };
     // this.handleChange = this.handleChange.bind(this);
     this.onOpenChange = this.onOpenChange.bind(this);
